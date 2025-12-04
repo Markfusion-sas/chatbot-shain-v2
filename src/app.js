@@ -1,7 +1,7 @@
 import express from 'express';
-import { helmetConfig } from './middlewares/helmet.middleware';
-import { generalLimiter } from './middlewares/rateLimiter.middleware';
-import { errorHandler } from './middlewares/errorHandler.middleware';
+import { helmetConfig } from './middlewares/helmet.middleware.js';
+import { generalLimiter } from './middlewares/rateLimiter.middleware.js';
+import { errorHandler } from './middlewares/errorHandler.middleware.js';
 
 const app = express();
 
@@ -21,3 +21,5 @@ app.use('/', (req, res) => res.status(200).send('Funcionando correctamente'));
 
 //Atrapar errores
 app.use(errorHandler);
+
+export default app;

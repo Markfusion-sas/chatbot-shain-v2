@@ -1,1 +1,1 @@
-export const { ALLOWED_FRONTEND_URL } = process.env;
+export const { ALLOWED_FRONTEND_URL, PORT } = process.env;

@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "main": "server.js",
   "type": "module",
+  "imports": {
+    "#*": "./src/*",
+    "#test/*": "./test/*"
+  },
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch --env-file=.env server.js",

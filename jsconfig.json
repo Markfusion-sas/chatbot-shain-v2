@@ -7,12 +7,12 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@config/*": ["src/config/*"],
-      "@utils/*": ["src/utils/*"],
-      "@services/*": ["src/services/*"],
-      "@models/*": ["src/models/*"],
-      "@controllers/*": ["src/controllers/*"]
+      "#/*": ["src/*"],
+      "#config/*": ["src/config/*"],
+      "#utils/*": ["src/utils/*"],
+      "#services/*": ["src/services/*"],
+      "#models/*": ["src/models/*"],
+      "#controllers/*": ["src/controllers/*"]
     }
   },
   "include": ["src/**/*"],
