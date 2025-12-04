@@ -23,7 +23,7 @@ describe('Suite de ejemplo', () => {
     const throwError = () => {
       throw new Error('Error intencional');
     };
-    
+
     assert.throws(throwError, Error);
   });
 });
