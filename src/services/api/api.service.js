@@ -1,7 +1,7 @@
 import { apiConfig } from '#/config/api.config.js';
 import axios from 'axios';
 
-export class apiService {
+export class ApiService {
   constructor() {
     this.client = axios.create({
       baseURL: apiConfig.baseURL,
@@ -47,5 +47,17 @@ export class apiService {
 
   get(url, config) {
     return this.client.get(url, config);
+  }
+
+  post(url, data, config) {
+    return this.client.post(url, data, config);
+  }
+
+  patch(url, data, config) {
+    return this.client.patch(url, data, config);
+  }
+
+  delete(url, config) {
+    return this.client.delete(url, config);
   }
 }

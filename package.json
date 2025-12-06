@@ -1,5 +1,5 @@
 {
-  "name": "nodejs",
+  "name": "chatbot-shain-v2",
   "version": "1.0.0",
   "main": "server.js",
   "type": "module",
@@ -27,7 +27,8 @@
     "axios": "^1.13.2",
     "express": "^5.2.1",
     "express-rate-limit": "^8.2.1",
-    "helmet": "^8.1.0"
+    "helmet": "^8.1.0",
+    "openai": "^6.10.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
