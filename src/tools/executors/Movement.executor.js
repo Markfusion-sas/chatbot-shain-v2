@@ -1,5 +1,5 @@
-import { MovementService } from '#/services/api/movement.service.js';
-import { BaseExecutor } from './base.executor.js';
+import { MovementService } from '#/services/api/Movement.service.js';
+import { BaseExecutor } from './Base.executor.js';
 
 export class MovementExecutor extends BaseExecutor {
   constructor(req) {

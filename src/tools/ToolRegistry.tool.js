@@ -1,4 +1,4 @@
-import { MovementExecutor } from './executors/movement.executor.js';
+import { MovementExecutor } from './executors/Movement.executor.js';
 import { movementsTool } from './movement.tool.js';
 
 export class ToolRegistry {
