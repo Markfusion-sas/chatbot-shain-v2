@@ -1,4 +1,4 @@
-import { apiConfig } from '#/config/api.config.js';
+import { apiConfig } from '#config/api.config.js';
 import axios from 'axios';
 
 export class ApiService {
@@ -41,6 +41,16 @@ export class ApiService {
 
     this.authToken = bearerMatch ? bearerMatch[1] : cookieFromBrowser;
     this.authHeader = auth;
+
+    this.client = axios.create({
+      baseURL: apiConfig.baseURL,
+      timeout: apiConfig.timeout,
+      withCredentials: true,
+      headers: {
+        'Content-Type': 'application/json',
+        Cookie: `token_shain=${this.authToken}`,
+      },
+    });
 
     return this;
   }

@@ -1,4 +1,4 @@
-import { ChatEngine } from '#/chatbot/core/ChatEngine.chatbot.js';
+import { ChatEngine } from '#chatbot/core/ChatEngine.chatbot.js';
 
 export class ChatController {
   constructor() {

@@ -21,7 +21,7 @@ export class MovementService {
     return this.client.get(`movements/user/${idUser}`);
   }
 
-  getSummary(idUser) {
-    return this.client.get(`movements/summary/${idUser}`);
+  getSummary(userId) {
+    return this.client.get(`movements/summary/${userId}`);
   }
 }

@@ -1,4 +1,4 @@
-import { aiConfig } from '#/config/ai.config';
+import { aiConfig } from '#config/ai.config.js';
 import OpenAI from 'openai';
 
 export class OpenAiService {

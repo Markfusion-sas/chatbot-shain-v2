@@ -3,7 +3,7 @@ export const movementsTool = [
     type: 'function',
     function: {
       name: 'addMovement',
-      description: 'Crea un nuevo movimiento financiero (ingreso o egreso) con fecha, valor y descripción.',
+      description: 'Crea un nuevo movimiento financiero (ingreso o egreso) con fecha, valor, tipo cliente ( nuevo o recurrente ) y descripción.',
       parameters: {
         type: 'object',
         properties: {

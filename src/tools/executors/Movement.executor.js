@@ -1,10 +1,11 @@
-import { MovementService } from '#/services/api/Movement.service.js';
+import { MovementService } from '#services/api/Movement.service.js';
 import { BaseExecutor } from './Base.executor.js';
 
 export class MovementExecutor extends BaseExecutor {
   constructor(req) {
     super();
     this.movement = new MovementService(req);
+    this.userId = req.body.userId;
   }
 
   async execute(toolName, data) {
@@ -19,7 +20,7 @@ export class MovementExecutor extends BaseExecutor {
         case 'listMovements':
           return await this.listMovements(data);
         case 'getSummary':
-          return await this.getSummary(data);
+          return await this.getSummary(this.userId);
         default:
           throw new Error(`Tool desconocida: ${toolName}`);
       }
@@ -49,8 +50,8 @@ export class MovementExecutor extends BaseExecutor {
     return this.handleSuccess(movement, 'Movimientos obtenidos');
   }
 
-  async getSummary(data) {
-    const summary = await this.movement.getSummary(data.idUser);
+  async getSummary(userId) {
+    const summary = await this.movement.getSummary(userId);
     return this.handleSuccess(summary, 'Resumen obtenido');
   }
 }

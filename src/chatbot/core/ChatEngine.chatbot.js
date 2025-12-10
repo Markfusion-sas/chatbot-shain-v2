@@ -1,5 +1,5 @@
-import { OpenAiService } from '#/services/ai/OpenAI.service.js';
-import { ToolRegistry } from '#/tools/ToolRegistry.tool.js';
+import { OpenAiService } from '#services/ai/OpenAI.service.js';
+import { ToolRegistry } from '#tools/ToolRegistry.tool.js';
 import { getSystemPrompt } from '../prompts/system.prompt.js';
 
 export class ChatEngine {
@@ -81,14 +81,14 @@ export class ChatEngine {
       try {
         const result = await toolRegistry.executeTool(name, data);
         results.push({
-          toolCallId: toolCall.id,
+          tool_call_id: toolCall.id,
           role: 'tool',
           name,
-          content: JSON.stringify(result),
+          content: JSON.stringify(result.data?.data),
         });
       } catch (error) {
         results.push({
-          toolCallId: toolCall.id,
+          tool_call_id: toolCall.id,
           role: 'tool',
           name,
           content: JSON.stringify({
