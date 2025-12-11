@@ -1,4 +1,4 @@
-import { ApiService } from './Api.service.js';
+import { ApiService } from '#services/api/Api.service.js';
 
 export class BookingService {
   constructor(req) {
