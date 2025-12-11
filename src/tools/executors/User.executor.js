@@ -1,4 +1,4 @@
-import { UserService } from '#services/api/user.service.js';
+import { UserService } from '#services/api/User.service.js';
 import { BaseExecutor } from './Base.executor.js';
 
 export class UserExecutor extends BaseExecutor {
