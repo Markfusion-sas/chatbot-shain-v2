@@ -90,14 +90,14 @@ export const movementsTool = [
   {
     type: 'function',
     function: {
-      name: 'getSummary',
+      name: 'getSummaryMovements',
       description: 'Obtiene un resumen financiero con totales de ingresos y egresos.',
       parameters: {
         type: 'object',
         properties: {
-          date: { type: 'string', description: 'Fecha en formato YYYY-MM' },
+          /* date: { type: 'string', description: 'Fecha en formato YYYY-MM' },
           from: { type: 'string', description: 'Fecha desde' },
-          to: { type: 'string', description: 'Fecha hasta' },
+          to: { type: 'string', description: 'Fecha hasta' }, */
         },
       },
     },

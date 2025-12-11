@@ -18,8 +18,8 @@ export class MovementExecutor extends BaseExecutor {
         case 'deleteMovement':
           return await this.deleteMovement(data);
         case 'listMovements':
-          return await this.listMovements(data);
-        case 'getSummary':
+          return await this.listMovements(this.userId);
+        case 'getSummaryMovements':
           return await this.getSummary(this.userId);
         default:
           throw new Error(`Tool desconocida: ${toolName}`);
@@ -45,8 +45,8 @@ export class MovementExecutor extends BaseExecutor {
     return this.handleSuccess(null, 'Movimiento eliminado exitosamente');
   }
 
-  async listMovements(data) {
-    const movement = await this.movement.listByUser(data.idUser);
+  async listMovements(userId) {
+    const movement = await this.movement.listByUser(userId);
     return this.handleSuccess(movement, 'Movimientos obtenidos');
   }
 
