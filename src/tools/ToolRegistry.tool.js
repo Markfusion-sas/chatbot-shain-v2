@@ -1,5 +1,9 @@
+import { bookingsTool } from './booking.tool.js';
+import { BookingExecutor } from './executors/Booking.executor.js';
 import { MovementExecutor } from './executors/Movement.executor.js';
+import { UserExecutor } from './executors/User.executor.js';
 import { movementsTool } from './movement.tool.js';
+import { usersTool } from './user.tool.js';
 
 export class ToolRegistry {
   constructor(req) {
@@ -10,6 +14,14 @@ export class ToolRegistry {
 
   registerTools() {
     movementsTool.forEach(tool => {
+      this.tools.set(tool.function.name, tool);
+    });
+
+    usersTool.forEach(tool => {
+      this.tools.set(tool.function.name, tool);
+    });
+
+    bookingsTool.forEach(tool => {
       this.tools.set(tool.function.name, tool);
     });
   }
@@ -23,7 +35,15 @@ export class ToolRegistry {
     if (!tool) {
       throw new Error(`Tool no encontrada: ${toolName}`);
     }
-    const executor = new MovementExecutor(this.req);
+    let executor = {};
+    if (toolName.includes('Movement')) {
+      executor = new MovementExecutor(this.req);
+    } else if (toolName.includes('User')) {
+      executor = new UserExecutor(this.req);
+    } else if (toolName.includes('Booking')) {
+      executor = new BookingExecutor(this.req);
+    }
+
     return executor.execute(toolName, data);
   }
 }
