@@ -1,4 +1,4 @@
-import { ApiService } from '#services/api/Api.tpm.js';
+import { ApiService } from '#services/api/Api.service.js';
 
 export class MovementService {
   constructor(req) {
