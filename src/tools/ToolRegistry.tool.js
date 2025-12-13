@@ -1,5 +1,7 @@
 import { bookingsTool } from './booking.tool.js';
+import { businessTool } from './business.tool.js';
 import { BookingExecutor } from './executors/Booking.executor.js';
+import { BusinessExecutor } from './executors/Business.executor.js';
 import { MovementExecutor } from './executors/Movement.executor.js';
 import { UserExecutor } from './executors/User.executor.js';
 import { movementsTool } from './movement.tool.js';
@@ -24,6 +26,10 @@ export class ToolRegistry {
     bookingsTool.forEach(tool => {
       this.tools.set(tool.function.name, tool);
     });
+
+    businessTool.forEach(tool => {
+      this.tools.set(tool.function.name, tool);
+    });
   }
 
   getAllTools() {
@@ -42,6 +48,8 @@ export class ToolRegistry {
       executor = new UserExecutor(this.req);
     } else if (toolName.includes('Booking')) {
       executor = new BookingExecutor(this.req);
+    } else if (toolName.includes('Business')) {
+      executor = new BusinessExecutor(this.req);
     }
 
     return executor.execute(toolName, data);
