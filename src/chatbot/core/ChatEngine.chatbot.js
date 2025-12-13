@@ -1,3 +1,4 @@
+import { RedisMemory } from '#chatbot/memory/RedisMemory.js';
 import { OpenAiService } from '#services/ai/OpenAI.service.js';
 import { ToolRegistry } from '#tools/ToolRegistry.tool.js';
 import { getSystemPrompt } from '../prompts/system.prompt.js';
@@ -5,16 +6,21 @@ import { getSystemPrompt } from '../prompts/system.prompt.js';
 export class ChatEngine {
   constructor() {
     this.aiService = new OpenAiService();
+    this.memory = new RedisMemory();
   }
 
   async processMessage({ userId, userMessage, req }) {
     try {
+      const history = await this.memory.getHistory(userId);
+
       // Crear ToolRegistry con el request (para auth)
       const toolRegistry = new ToolRegistry(req);
 
       //Construir mensajes
+      // prettier-ignore
       const messages = [
         { role: 'system', content: getSystemPrompt() },
+        ...history,
         { role: 'user', content: userMessage },
       ];
 
@@ -47,6 +53,9 @@ export class ChatEngine {
 
       // Extraer respuesta final
       const finalMessage = response.choices?.[0]?.message?.content || 'Lo siento, no pude generar una respuesta.';
+
+      await this.memory.addMessage(userId, 'user', userMessage);
+      await this.memory.addMessage(userId, 'assistant', finalMessage);
 
       return {
         ok: true,

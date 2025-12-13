@@ -6,5 +6,6 @@ export const {
   NODE_ENV,
   CHATBOT_KEY,
   OPENAI_API_KEY,
-  OPENAI_MODEL
+  OPENAI_MODEL,
+  REDIS_URL,
 } = process.env;
