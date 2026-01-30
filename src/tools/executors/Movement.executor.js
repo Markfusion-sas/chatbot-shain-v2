@@ -6,6 +6,7 @@ export class MovementExecutor extends BaseExecutor {
     super();
     this.movement = new MovementService(req);
     this.userId = req.body.userId;
+    this.businessId = req.body.businessId;
   }
 
   async execute(toolName, data) {
@@ -18,7 +19,7 @@ export class MovementExecutor extends BaseExecutor {
         case 'deleteMovement':
           return await this.deleteMovement(data);
         case 'listMovements':
-          return await this.listMovements(this.userId);
+          return await this.listMovements(this.userId, data);
         case 'getSummaryMovements':
           return await this.getSummary(this.userId);
         default:
@@ -45,8 +46,8 @@ export class MovementExecutor extends BaseExecutor {
     return this.handleSuccess(null, 'Movimiento eliminado exitosamente');
   }
 
-  async listMovements(userId) {
-    const movement = await this.movement.listByUser(userId);
+  async listMovements(userId, data = {}) {
+    const movement = await this.movement.listByUser(userId, data);
     return this.handleSuccess(movement, 'Movimientos obtenidos');
   }
 

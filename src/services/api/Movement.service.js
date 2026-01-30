@@ -17,8 +17,16 @@ export class MovementService {
     return this.client.delete(`movements/${id}`);
   }
 
-  listByUser(idUser) {
-    return this.client.get(`movements/user/${idUser}`);
+  listByUser(idUser, data) {
+    return this.client.get(`movements/user/${idUser}`, {
+      params: {
+        ...data,
+      },
+    });
+  }
+
+  listByBusiness(idBusiness) {
+    return this.client.get(`movements/user/${idBusiness}`);
   }
 
   getSummary(userId) {

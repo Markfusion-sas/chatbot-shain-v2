@@ -75,14 +75,19 @@ export const movementsTool = [
     type: 'function',
     function: {
       name: 'listMovements',
-      description: 'Lista movimientos con filtros opcionales.',
+      description: 'Lista movimientos con filtros opcionales, dependiendo del rol del usuario',
       parameters: {
         type: 'object',
         properties: {
-          type: { type: 'string', enum: ['ingreso', 'egreso'] },
+          type: { type: 'string', enum: ['ingreso', 'egreso'], description: 'Tipo de movimiento' },
+          /* filterDate: {
+            type: 'string',
+            enum: ['other', 'sevenDays', 'month', 'quarter', 'year'],
+            description: 'Rangos de fecha, si pide algo fuera del rango no tomes en cuenta la proiedad',
+          }, */
           limit: { type: 'number', description: 'Límite de resultados' },
-          from: { type: 'string', description: 'Fecha desde' },
-          to: { type: 'string', description: 'Fecha hasta' },
+          from: { type: 'string', description: 'Fecha desde, ten en cuenta si dicen de este' },
+          to: { type: 'string', description: 'Fecha hasta, ten en cuenta si dicen de este' },
         },
       },
     },
