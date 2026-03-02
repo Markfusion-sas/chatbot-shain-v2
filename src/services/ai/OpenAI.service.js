@@ -7,12 +7,13 @@ export class OpenAiService {
     this.model = aiConfig.model;
   }
 
-  async chat({ messages, tools }) {
+  async chat({ messages, tools, tool_choice = 'auto' }) {
     try {
       const response = await this.client.chat.completions.create({
         model: this.model,
         messages,
         tools,
+        tool_choice,
         temperature: aiConfig.temperature,
         max_tokens: aiConfig.maxTokens,
       });

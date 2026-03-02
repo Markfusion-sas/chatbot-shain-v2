@@ -28,13 +28,13 @@ export class ChatEngine {
       let response = await this.aiService.chat({
         messages,
         tools: toolRegistry.getAllTools(),
+        tool_choice: 'required',
       });
-
       //Procesar tool calls iterativamente
       const MAX_ITERATIONS = 5;
       let iteration = 0;
 
-      while (response.choices?.[0]?.finish_reason === 'tool_calls' && iteration < MAX_ITERATIONS) {
+      while (response.choices?.[0]?.message?.tool_calls?.length > 0 && iteration < MAX_ITERATIONS) {
         const toolCalls = response.choices[0].message.tool_calls;
         const toolResults = await this.executeTools(toolRegistry, toolCalls);
 
