@@ -5,6 +5,6 @@ export const apiConfig = {
   timeout: 30000,
   retires: 3,
   endpoints: {
-    movements: '/api/movements',
+    movements: '/api/v1/movements',
   },
 };

@@ -26,7 +26,7 @@ export class MovementService {
   }
 
   listByBusiness(idBusiness) {
-    return this.client.get(`movements/user/${idBusiness}`);
+    return this.client.get(`movements/business/${idBusiness}`);
   }
 
   getSummary(userId) {
